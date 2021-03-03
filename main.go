@@ -319,7 +319,7 @@ func buildString(clientStateReply *ClientStateReply) string {
 	sb.WriteString("\n")
 	sb.WriteString("# TYPE boinc_client_task_done_percent gauge\n")
 	for _, task := range results {
-		sb.WriteString(fmt.Sprintf("boinc_client_task_done_percent{project=\"%s\",state=\"%d\"} %f\n", findProjectName(task.ProjectUrl, projects), task.Activetask.State, task.Activetask.FractionDone))
+		sb.WriteString(fmt.Sprintf("boinc_client_task_done_percent{project=\"%s\",state=\"%d\",wuname=\"%s\"} %f\n", findProjectName(task.ProjectUrl, projects), task.Activetask.State, task.WUName, task.Activetask.FractionDone*100))
 	}
 	sb.WriteString("\n")
 	sb.WriteString("# TYPE boinc_client_task_final_cpu_time gauge\n")
